@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 
 private const val baseUrl = "https://www.dnd5eapi.co/api/"
 
-class Controller : Interceptor {
+object Controller : Interceptor {
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(getLoggingInterceptor())
