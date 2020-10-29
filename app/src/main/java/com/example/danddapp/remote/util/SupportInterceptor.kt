@@ -10,8 +10,7 @@ import java.util.concurrent.TimeUnit
 
 const val baseUrl = "https://www.dnd5eapi.co/api/"
 
-class Controller : Interceptor {
-
+class SupportInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         var request = chain.request()
