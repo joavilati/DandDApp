@@ -10,12 +10,11 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 import retrofit2.create
 import java.lang.Exception
+import javax.inject.Inject
 
-class DnD5ThRepository {
+class DnD5ThRepository @Inject constructor(val service: DnDService):Repository {
 
-    var service = Controller.retrofit.create(DnDService::class.java)
-
-    suspend fun getClasses(listener: (LiveDataResult<List<Index>>) -> Unit) {
+    override suspend fun getClasses(listener: (LiveDataResult<List<Index>>) -> Unit) {
         withContext(IO) {
             try {
                 val request = service.getClasses()
@@ -27,7 +26,7 @@ class DnD5ThRepository {
         }
     }
 
-    suspend fun getDnDClass(classIndex: String, listener: (LiveDataResult<DnDClass>) -> Unit) {
+    override suspend fun getDnDClass(classIndex: String, listener: (LiveDataResult<DnDClass>) -> Unit) {
         withContext(IO) {
             try {
                 val request = service.getDnDClass(classIndex)
