@@ -8,6 +8,10 @@ android {
     compileSdkVersion 29
     buildToolsVersion "30.0.2"
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -17,9 +21,6 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    buildFeatures {
-        viewBinding = true
-    }
 
     defaultConfig {
         applicationId "com.example.danddapp"
@@ -40,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def lifecycle_version = "2.2.0"
     def nav_version = "2.3.0"
 
@@ -82,4 +84,17 @@ dependencies {
 
     implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02'
     kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
+
+    testImplementation 'com.google.dagger:hilt-android-testing:2.28-alpha'
+    // ...with Kotlin.
+    kaptTest 'com.google.dagger:hilt-android-compiler:2.28-alpha'
+    // ...with Java.
+    testAnnotationProcessor 'com.google.dagger:hilt-android-compiler:2.28-alpha'
+
+    // For instrumented tests.
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.28-alpha'
+    // ...with Kotlin.
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.28-alpha'
+    // ...with Java.
+    androidTestAnnotationProcessor 'com.google.dagger:hilt-android-compiler:2.28-alpha'
 }
